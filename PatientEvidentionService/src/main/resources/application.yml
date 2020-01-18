@@ -1,0 +1,24 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+server:
+  port: 8200
+spring:
+  application:
+    name: nurse-service
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        hbm2ddl:
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+    show-sql: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false 
+  datasource:
+    url: jdbc:mysql://localhost:3306/patients?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
