@@ -78,8 +78,10 @@ WHERE
 NOT EXISTS (SELECT 1 FROM professional_qualification WHERE id = 14);
 
 -- dodavanje medicinske sestre
-INSERT INTO user_account(type, id, username, password, last_password_change_date, email, active, registration_date)
+INSERT INTO user_account(type, id, username, password, last_password_change_date, email, active, registration_date, 
+firstname, lastname, jmbg, date_of_birth, address, phone_number, professional_qualification_id)
 SELECT 'nurse', nextval('nurse_id_generator_seq'), 'nurse', '$2a$10$JT96.VJpkDtmjmDTBvm.rOIh.9qHsW49N3OBC4fM14jzIJVfiDSu6', current_timestamp, 'nurse@nurse.com', true, current_timestamp
+, 'Medicinska', 'Sestra', '2802991188736', TO_DATE('28.2.1991', 'DD.MM.YYYY'), 'Ulica bb, Novi Sad 21000', '060/1322175', 5
 WHERE 
 NOT EXISTS (
     SELECT 1 FROM user_account WHERE username = 'nurse'

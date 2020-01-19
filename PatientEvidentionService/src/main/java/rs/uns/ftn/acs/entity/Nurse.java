@@ -25,7 +25,7 @@ public class Nurse extends UserAccount {
 	private Date dateOfBirth;
 
 	@Column
-	private String adress;
+	private String address;
 
 	@Column
 	private String phoneNumber;
@@ -66,12 +66,12 @@ public class Nurse extends UserAccount {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getPhoneNumber() {
