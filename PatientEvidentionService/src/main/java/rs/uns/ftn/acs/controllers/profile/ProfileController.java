@@ -5,7 +5,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +29,7 @@ public class ProfileController {
 	@Autowired
 	private AuthenticationService authenticationService;
 	
+	@PreAuthorize("hasAnyRole('NURSE')")
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ResponseEntity<UserAccount> getProfile() throws ResourceNotFoundException {	
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -34,7 +37,8 @@ public class ProfileController {
 		return new ResponseEntity<UserAccount>(profileService.findByUsername(username), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('NURSE')")
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> changePassword(@Valid @RequestBody PasswordChangeDTO passwordInfo,	HttpServletRequest request) throws ResourceNotFoundException {
 		//get username
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -50,5 +54,5 @@ public class ProfileController {
 			//passwords don't match
 			return new ResponseEntity<String>("Old password is incorrect.", HttpStatus.BAD_REQUEST);
 		}
-	}
+	}	
 }

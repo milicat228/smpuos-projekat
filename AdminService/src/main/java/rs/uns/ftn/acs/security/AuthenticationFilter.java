@@ -11,11 +11,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import rs.uns.ftn.acs.security.userdetails.CustomUserDetails;
 import rs.uns.ftn.acs.security.userdetails.CustomUserDetailsService;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
-	private static final String API_KEY = "nurse-service";
 	private CustomUserDetailsService customUserDetailsService;
 	private TokenUtils tokenUtils;
 	
@@ -27,8 +25,6 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
-		//check if its user
 		String authToken = tokenUtils.getToken(request);
 		if (authToken != null) {
 			// pronadji username u tokenu
@@ -45,13 +41,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 				}
 			}
 		}
-		
-		//check if its other service
-		String apiHeader = request.getHeader("API-Key");
-		if(API_KEY.equals(apiHeader)) {
-			APIKeyBasedAuthentication apiAuthentication = new APIKeyBasedAuthentication(new CustomUserDetails());
-			SecurityContextHolder.getContext().setAuthentication(apiAuthentication);
-		}
+
 		filterChain.doFilter(request, response);
 	}
 
