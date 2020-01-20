@@ -12,9 +12,9 @@
 	</parent>
 
 	<groupId>rs.uns.acs.ftn</groupId>
-	<artifactId>PatientEvidentionService</artifactId>
+	<artifactId>MedicalExamReportingService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PatientEvidentionService</name>
+	<name>MedicalExamReportingService</name>
 	<description>Service for working with patient evidention.</description>
 
 	<properties>
