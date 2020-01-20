@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 public class InsurenceBase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "insurence_generator")
-	@SequenceGenerator(name = "insurence_generator", sequenceName = "insurence_seq")
+	@SequenceGenerator(name = "insurence_generator", sequenceName = "insurence_seq", initialValue = 50)
 	private Integer id;
 
 	@Column(nullable = false, unique = true)

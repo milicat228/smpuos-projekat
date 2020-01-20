@@ -95,4 +95,68 @@ WHERE u.username = 'nurse' AND a.name = 'NURSE' AND
 	NOT EXISTS (
     	SELECT 1 FROM user_account_authorities WHERE user_account_id = u.id
 	);
+	
+-- dodavanje osnova osiguranja
+INSERT INTO insurence_base(id, name) 
+SELECT 1, 'Radni odnos'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 1);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 8, 'Vrhunski i profesionalni sportisti'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 8);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 9, 'Korisnik penzije'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 9);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 11, 'Nezaposleno lice'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 11);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 14, 'Borac, vojni invalid ili porodica poginulog boraca'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 14);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 15, 'Socijalno osiguranje'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 15);
+
+INSERT INTO insurence_base(id, name) 
+SELECT 14, 'Borac, vojni invalid ili porodica poginulog boraca'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 14);
+
+--unos obveznika plaćanja osiguranja
+INSERT INTO insurence_payer(id, name) 
+SELECT 1, 'Fakultet Tehničkih Nauka'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 1);
+
+INSERT INTO insurence_payer(id, name) 
+SELECT 2, 'Univer Export'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 2);
+
+INSERT INTO insurence_payer(id, name) 
+SELECT 3, 'Opština Novi Sad'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 3);
+
+INSERT INTO insurence_payer(id, name) 
+SELECT 4, 'Gradska biblioteka'
+WHERE 
+NOT EXISTS (SELECT 1 FROM insurence_base WHERE id = 4);
+
+--unos pacijenata
+INSERT INTO patient(id, firstname, lastname, JMBG, date_of_birth, gender, lbo, zk)
+SELECT 1, 'Milica', 'Todorović', '2802997188736', TO_DATE('28.2.1997', 'dd.MM.yyyy'), 1, '21600308163', '20044507604'
+WHERE 
+NOT EXISTS (SELECT 1 FROM patient WHERE id = 1);
+
 
