@@ -22,12 +22,7 @@ public class Patient {
 
 	@Column(unique = true, length = 13)
 	private String JMBG;
-	/*
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "patient")
-	private List<Report> reports;
-	*/
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "patient")
-	private List<Appointment> appointments;
+
 
 	public Patient() {
 		super();
@@ -42,7 +37,7 @@ public class Patient {
 		this.lastname = lastname;
 		JMBG = jMBG;
 		//this.reports = reports;
-		this.appointments = appointments;
+		
 	}
 
 
@@ -93,26 +88,7 @@ public class Patient {
 	public void setIdPat(Integer idPat) {
 		this.idPat = idPat;
 	}
-/*
-	public List<Report> getReports() {
-		return reports;
-	}
 
-	public void setReports(List<Report> reports) {
-		this.reports = reports;
-	}
-*/
-
-
-	public List<Appointment> getAppointments() {
-		return appointments;
-	}
-
-
-
-	public void setAppointments(List<Appointment> appointments) {
-		this.appointments = appointments;
-	}
 	
 	
 	

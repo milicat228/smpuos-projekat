@@ -16,7 +16,7 @@ public class Appointment {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idApp;
+	private Integer id;
 	
 	@Column 
 	private Timestamp dateAndTime;
@@ -25,7 +25,10 @@ public class Appointment {
 	private Integer duration;
 	
 	@Column
-	private Boolean free;
+	private Boolean free=true;
+	
+	@Column
+	private Boolean came;
 	
 	@ManyToOne
 	@JoinColumn(name="idDoc")
@@ -39,23 +42,24 @@ public class Appointment {
 		super();
 	}
 
-	public Appointment(Integer idApp, Timestamp dateAndTime, Integer duration, Boolean free, Doctor doctor,
-			Patient patient) {
+	public Appointment(Integer id, Timestamp dateAndTime, Integer duration, Boolean free, Doctor doctor,
+			Patient patient,Boolean came) {
 		super();
-		this.idApp = idApp;
+		this.id = id;
 		this.dateAndTime = dateAndTime;
 		this.duration = duration;
 		this.free = free;
 		this.doctor = doctor;
 		this.patient = patient;
+		this.came=came;
 	}
 
-	public Integer getIdApp() {
-		return idApp;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdApp(Integer idApp) {
-		this.idApp = idApp;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Timestamp getDateAndTime() {
@@ -96,6 +100,14 @@ public class Appointment {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	public Boolean getCame() {
+		return came;
+	}
+
+	public void setCame(Boolean came) {
+		this.came = came;
 	}
 	
 	

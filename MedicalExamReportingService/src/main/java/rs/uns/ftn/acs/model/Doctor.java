@@ -49,11 +49,11 @@ public class Doctor extends UserAccount {
 	@Column
 	private int numOfPatients;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
+	/*@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
 	private List<Report> reports;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
-	private List<Appointment> appointments;
+	private List<Appointment> appointments;*/
 
 	public Doctor() {
 		super();
@@ -209,7 +209,7 @@ public class Doctor extends UserAccount {
 
 */
 
-	public List<Report> getReports() {
+	/*public List<Report> getReports() {
 		return reports;
 	}
 
@@ -225,12 +225,12 @@ public class Doctor extends UserAccount {
 		return appointments;
 	}
 
-
+	
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
 	}
-	
+	*/
 	/*@ManyToMany(fetch = FetchType.EAGER)
 	protected Set<Authority> authorities;*/
 

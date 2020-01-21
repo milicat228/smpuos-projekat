@@ -30,7 +30,7 @@ public class ProfileController {
 	@Autowired
 	private AuthenticationService authenticationService;
 	
-	@PreAuthorize("hasAnyRole('NURSE')")
+	//@PreAuthorize("hasAnyRole('DOCTOR')")
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ResponseEntity<UserAccount> getProfile() throws ResourceNotFoundException {	
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -38,7 +38,7 @@ public class ProfileController {
 		return new ResponseEntity<UserAccount>(profileService.findByUsername(username), HttpStatus.OK);
 	}
 	
-	@PreAuthorize("hasAnyRole('NURSE')")
+	//@PreAuthorize("hasAnyRole('DOCTOR')")
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> changePassword(@Valid @RequestBody PasswordChangeDTO passwordInfo,	HttpServletRequest request) throws ResourceNotFoundException {
 		//get username
