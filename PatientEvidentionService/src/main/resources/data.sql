@@ -159,4 +159,16 @@ SELECT 1, 'Milica', 'Todorović', '2802997188736', TO_DATE('28.2.1997', 'dd.MM.y
 WHERE 
 NOT EXISTS (SELECT 1 FROM patient WHERE id = 1);
 
+--unos pacijenata
+INSERT INTO patient(id, firstname, lastname, JMBG, date_of_birth, gender, lbo, zk)
+SELECT 2, 'Isteklo', 'Osiguranje', '2802997188788', TO_DATE('11.11.1965', 'dd.MM.yyyy'), 1, '27700296463', '20060508684'
+WHERE 
+NOT EXISTS (SELECT 1 FROM patient WHERE id = 3);
+
+--unos pacijenata
+INSERT INTO patient(id, firstname, lastname, JMBG, date_of_birth, gender, lbo, zk)
+SELECT 3, 'Milana', 'Todorović', '2802347188736', TO_DATE('28.2.1997', 'dd.MM.yyyy'), 1, '28700346910', '20048667362'
+WHERE 
+NOT EXISTS (SELECT 1 FROM patient WHERE id = 3);
+
 

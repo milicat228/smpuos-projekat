@@ -1,11 +1,12 @@
-package rs.uns.ftn.acs.repository;
+package rs.uns.ftn.acs.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import rs.uns.ftn.acs.entity.Patient;
+import rs.uns.ftn.acs.models.Patient;
+
 
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
-	Optional<Patient> findByLBO(String lbo);
+	Optional<Patient> findByUsername(String username);
 }

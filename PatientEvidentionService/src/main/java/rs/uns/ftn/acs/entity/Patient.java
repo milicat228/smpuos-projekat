@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.apache.commons.lang.time.DateUtils;
+
 @Entity
 public class Patient {
 	@Id
@@ -140,6 +142,25 @@ public class Patient {
 
 	public Date getInsurenceEndDate() {
 		return insurenceEndDate;
+	}
+	
+	public Boolean isInsurenceValid() {
+		if(this.insurenceEndDate == null) {
+			return false;
+		}
+		Date now = new Date();
+		
+		//vrati true ako je isti dan
+		if( DateUtils.isSameDay(now, this.insurenceEndDate)) {
+			return true;
+		}
+		
+		//vrati true ako je u buducnosti
+		if( this.insurenceEndDate.after(now) ) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	public void setInsurenceEndDate(Date insurenceEndDate) {
