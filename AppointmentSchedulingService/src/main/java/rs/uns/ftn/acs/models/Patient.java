@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Patient { 
 		@Column(unique = true, nullable = false)
-		private String username;
+		protected String username;
 		
 		@JsonIgnore
 		@Column(nullable = false)
-		private String password;
+		protected String password;
 		 	
 	 	@Column
 		private String firstname;

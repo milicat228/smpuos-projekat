@@ -1,5 +1,5 @@
 package rs.uns.ftn.acs.authentification;
 
-public class PatientCredentialsService {
+public class DeviceProvider {
 
 }
