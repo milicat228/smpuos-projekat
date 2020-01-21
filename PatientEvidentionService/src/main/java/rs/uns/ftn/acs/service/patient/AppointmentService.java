@@ -42,18 +42,18 @@ public class AppointmentService {
 
 		// pacijentu vazi osiguranje ali je kasnio 3 puta
 		if (patient.getLBO().equals("28700346910")) {
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-600), 30, "Neki lekar", false));
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-400), 30, "Neki lekar", false));
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-40), 30, "Neki lekar", false));
 			ret.add(new AppointmentDTO(1, dateNHoursFromNow(2), 30, "Neki lekar", null));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-60), 30, "Neki lekar", false));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-4000), 30, "Neki lekar", false));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-40000), 30, "Neki lekar", false));
 		}
 
 		// pacijentu vazi osiguranje i nije kasnio 3 puta
 		if (patient.getLBO().equals("21600308163")) {
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-600), 30, "Neki lekar", true));
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-400), 30, "Neki lekar", true));
-			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-40), 30, "Neki lekar", true));
 			ret.add(new AppointmentDTO(1, dateNHoursFromNow(2), 30, "Neki lekar", null));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-60), 30, "Neki lekar", true));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-4000), 30, "Neki lekar", true));
+			ret.add(new AppointmentDTO(1, dateNHoursFromNow(-40000), 30, "Neki lekar", true));
 		}
 
 		calculateAppointmentsStatus(patient, ret);

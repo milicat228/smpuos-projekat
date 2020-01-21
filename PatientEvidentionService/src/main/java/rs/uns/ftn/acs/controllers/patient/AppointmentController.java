@@ -41,7 +41,7 @@ public class AppointmentController {
 	}
 	
 	@PreAuthorize("hasAnyRole('NURSE')")
-	@RequestMapping(value = "/{lbo}/appointment/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{lbo}/appointment/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Boolean> confirmArrival(@PathVariable String lbo, @PathVariable Integer id) throws ResourceNotFoundException{
 		Boolean ret = appointmentService.confirmArrival(lbo, id);
 		return new ResponseEntity<Boolean>(ret, HttpStatus.OK);
