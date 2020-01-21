@@ -22,6 +22,7 @@ package rs.uns.ftn.acs.dtos;
 		private String phone;
 		private String username;
 		private String password;
+		private Integer id;
 		
 		public Patient getPatient() {
 			Patient patient = new Patient();
@@ -33,6 +34,7 @@ package rs.uns.ftn.acs.dtos;
 			patient.setBirthday(birthday);
 			patient.setAddress(address);
 			patient.setPhone(phone);
+			patient.setId(id);
 			return patient;
 		}
 
@@ -100,6 +102,22 @@ package rs.uns.ftn.acs.dtos;
 
 		public void setPhone(String phone) {
 			this.phone = phone;
+		}
+
+		public Boolean getActive() {
+			return active;
+		}
+
+		public void setActive(Boolean active) {
+			this.active = active;
+		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
 		}
 
 	

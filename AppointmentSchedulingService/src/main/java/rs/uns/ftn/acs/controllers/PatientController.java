@@ -17,7 +17,7 @@ import rs.uns.ftn.acs.service.PatientService;
 
 
 	@RestController
-	@RequestMapping("nurse")
+	@RequestMapping("patient")
 	public class PatientController {
 		@Autowired
 		private PatientService patientService;
