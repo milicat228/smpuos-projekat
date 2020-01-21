@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import rs.uns.ftn.acs.dtos.ReportDTO;
+
 
 @Entity
 public class Report {
@@ -26,13 +28,13 @@ public class Report {
 	private List<Allergy> allergies;
 	
 	@ManyToMany
-	private List<FamilyDisease> familyDisaeases;
+	private List<FamilyDisease> familyDiseases;
 	
 	@Column
 	private String opinion;
 	
 	@ManyToMany
-	private List<DiagnosedDisease> diagnosedDisaeases;
+	private List<DiagnosedDisease> diagnosedDiseases;
 	
 	@ManyToMany
 	private List<Med> meds;
@@ -58,9 +60,9 @@ public class Report {
 		super();
 		this.id = id;
 		this.allergies = allergies;
-		this.familyDisaeases = familyDisaeases;
+		this.familyDiseases = familyDisaeases;
 		this.opinion = opinion;
-		this.diagnosedDisaeases = diagnosedDisaeases;
+		this.diagnosedDiseases = diagnosedDisaeases;
 		this.meds = meds;
 		this.therapyDescription = therapyDescription;
 		this.doctor = doctor;
@@ -83,12 +85,12 @@ public class Report {
 		this.allergies = allergies;
 	}
 
-	public List<FamilyDisease> getFamilyDisaeases() {
-		return familyDisaeases;
+	public List<FamilyDisease> getFamilyDiseases() {
+		return familyDiseases;
 	}
 
-	public void setFamilyDisaeases(List<FamilyDisease> familyDisaeases) {
-		this.familyDisaeases = familyDisaeases;
+	public void setFamilyDiseases(List<FamilyDisease> familyDisaeases) {
+		this.familyDiseases = familyDisaeases;
 	}
 
 	public String getOpinion() {
@@ -99,12 +101,12 @@ public class Report {
 		this.opinion = opinion;
 	}
 
-	public List<DiagnosedDisease> getDiagnosedDisaeases() {
-		return diagnosedDisaeases;
+	public List<DiagnosedDisease> getDiagnosedDiseases() {
+		return diagnosedDiseases;
 	}
 
-	public void setDiagnosedDisaeases(List<DiagnosedDisease> diagnosedDisaeases) {
-		this.diagnosedDisaeases = diagnosedDisaeases;
+	public void setDiagnosedDiseases(List<DiagnosedDisease> diagnosedDiseases) {
+		this.diagnosedDiseases = diagnosedDiseases;
 	}
 
 	public List<Med> getMeds() {
@@ -138,6 +140,7 @@ public class Report {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+	
 	
 	
 	

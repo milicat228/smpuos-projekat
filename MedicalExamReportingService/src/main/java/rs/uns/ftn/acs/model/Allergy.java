@@ -15,19 +15,19 @@ public class Allergy {
 	
 	@Column
 	private String name;
-	
+	/*
 	@ManyToMany
 	private List<Report> reports;
-	
+	*/
 	public Allergy() {
 		super();
 	}
 
-	public Allergy(Integer id, String name, List<Report> reports) {
+	public Allergy(Integer id, String name/*, List<Report> reports*/) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.reports = reports;
+		//this.reports = reports;
 	}
 
 	public Integer getId() {
@@ -45,7 +45,7 @@ public class Allergy {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+/*
 	public List<Report> getPatients() {
 		return reports;
 	}
@@ -53,4 +53,5 @@ public class Allergy {
 	public void setPatients(List<Report> reports) {
 		this.reports = reports;
 	}
+*/
 }
