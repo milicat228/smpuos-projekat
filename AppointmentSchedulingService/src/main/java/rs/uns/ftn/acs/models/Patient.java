@@ -53,6 +53,19 @@ public class Patient {
 		@CreationTimestamp
 		protected Date registrationDate;
 		
+		@ManyToOne
+		private Doctor doctor;		
+		
+		
+
+		public Doctor getDoctor() {
+			return doctor;
+		}
+
+		public void setDoctor(Doctor doctor) {
+			this.doctor = doctor;
+		}
+
 		@Id
 		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator_patient")
 		@SequenceGenerator(name = "patient_id_generator", sequenceName = "generatorseq_patient")

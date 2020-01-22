@@ -5,13 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Service;
 
 import rs.uns.ftn.acs.authentification.CustomUserDetails;
 import rs.uns.ftn.acs.authentification.CustomUserDetailsService;
 import rs.uns.ftn.acs.authentification.TokenUtils;
 import rs.uns.ftn.acs.models.Patient;
 
-
+@Service
 public class LoginService {
 
 		@Autowired

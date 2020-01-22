@@ -16,18 +16,17 @@ public class FamilyDisease {
 	@Column
 	private String name;
 
-	@ManyToMany
-	private List<Report> reports;
+	
 	
 	public FamilyDisease() {
 		super();
 	}
 
-	public FamilyDisease(Integer id, String name, List<Report> reports) {
+	public FamilyDisease(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.reports = reports;
+		
 	}
 
 	public Integer getId() {
@@ -46,12 +45,6 @@ public class FamilyDisease {
 		this.name = name;
 	}
 	
-	public List<Report> getPatients() {
-		return reports;
-	}
 
-	public void setPatients(List<Report> reports) {
-		this.reports = reports;
-	}
 
 }

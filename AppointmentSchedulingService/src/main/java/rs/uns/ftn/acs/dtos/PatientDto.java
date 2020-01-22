@@ -9,7 +9,9 @@ package rs.uns.ftn.acs.dtos;
 
 	import org.hibernate.validator.constraints.Length;
 
-	import rs.uns.ftn.acs.models.Patient;
+import rs.uns.ftn.acs.models.Doctor;
+import rs.uns.ftn.acs.models.DoctorType;
+import rs.uns.ftn.acs.models.Patient;
 
 	public class PatientDto {
 		@NotBlank(message = "Email is requested.")
@@ -23,6 +25,7 @@ package rs.uns.ftn.acs.dtos;
 		private String username;
 		private String password;
 		private Integer id;
+		private Doctor doctor;
 		
 		public Patient getPatient() {
 			Patient patient = new Patient();
@@ -35,7 +38,17 @@ package rs.uns.ftn.acs.dtos;
 			patient.setAddress(address);
 			patient.setPhone(phone);
 			patient.setId(id);
+			patient.setDoctor(doctor);
+
 			return patient;
+		}
+
+		public Doctor getDoctor() {
+			return doctor;
+		}
+
+		public void setDoctor(Doctor doctor) {
+			this.doctor = doctor;
 		}
 
 		public String getUsername() {

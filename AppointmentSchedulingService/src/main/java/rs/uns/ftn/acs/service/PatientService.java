@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,13 +42,13 @@ public class PatientService {
 		return repo.save(entity);
 	}
 	
-	public Patient update(String username, String password) throws ResourceNotFoundException {
+	public Patient update(String username, String password) throws UsernameNotFoundException {
 		Optional<Patient> patient = repo.findByUsername(username);
 		if(patient.isPresent()) {
 			Patient p = patient.get();
 			p.setPassword(encoder.encode(password));
 			repo.save(p);
 		}
-		throw new ResourceNotFoundException();
+		throw new UsernameNotFoundException(username);
 	}
 }

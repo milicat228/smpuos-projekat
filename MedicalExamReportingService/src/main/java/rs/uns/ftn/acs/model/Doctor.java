@@ -22,12 +22,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @DiscriminatorValue("doctor")
-public class Doctor {
+public class Doctor extends UserAccount {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer idDoc;
-	
+
 	@Column
 	private String firstname;
 
@@ -36,17 +33,7 @@ public class Doctor {
 
 	@Column(unique = true, length = 13)
 	private String JMBG;
-	
-	@Column(unique = true, nullable = false)
-	protected String email;
 
-	@Column(unique = true, nullable = false)
-	protected String username;
-
-	@JsonIgnore
-	@Column(nullable = false)
-	protected String password;
-	
 	@Column
 	private Date dateOfBirth;
 
@@ -62,29 +49,18 @@ public class Doctor {
 	@Column
 	private int numOfPatients;
 	
-	@JsonIgnore
-	@Column
-	protected Timestamp lastPasswordChangeDate;
-
-
-	@Column(nullable = false)
-	protected Boolean active = true;
-
-	@CreationTimestamp
-	protected Date registrationDate;
-	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
+	/*@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
 	private List<Report> reports;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy = "doctor")
-	private List<Appointment> appointments;
+	private List<Appointment> appointments;*/
 
 	public Doctor() {
 		super();
 	}
 
 	
-
+/*
 	public Doctor(Integer idDoc, String firstname, String lastname, String jMBG, String email, String username,
 			String password, Date dateOfBirth, String address, String phoneNumber, Specialty spec, int numOfPatients,
 			Timestamp lastPasswordChangeDate, Boolean active, Date registrationDate, List<Report> reports,
@@ -93,7 +69,7 @@ public class Doctor {
 		this.idDoc = idDoc;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		JMBG = jMBG;
+		this.JMBG = jMBG;
 		this.email = email;
 		this.username = username;
 		this.password = password;
@@ -108,9 +84,9 @@ public class Doctor {
 		this.reports = reports;
 		this.appointments = appointments;
 	}
+*/
 
-
-
+/*
 	public Integer getId() {
 		return idDoc;
 	}
@@ -118,7 +94,7 @@ public class Doctor {
 	public void setId(Integer id) {
 		this.idDoc = id;
 	}
-
+*/
 	public String getFirstname() {
 		return firstname;
 	}
@@ -142,7 +118,7 @@ public class Doctor {
 	public void setJMBG(String jMBG) {
 		JMBG = jMBG;
 	}
-
+/*
 	public String getEmail() {
 		return email;
 	}
@@ -167,7 +143,7 @@ public class Doctor {
 		this.password = password;
 	}
 
-	public Date getDateOfBirth() {
+*/	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -204,9 +180,9 @@ public class Doctor {
 	}
 
 	public void setNumOfPatients(int numOfPatients) {
-		numOfPatients = numOfPatients;
+		this.numOfPatients = numOfPatients;
 	}
-
+/*
 	public Timestamp getLastPasswordChangeDate() {
 		return lastPasswordChangeDate;
 	}
@@ -231,9 +207,9 @@ public class Doctor {
 		this.registrationDate = registrationDate;
 	}
 
+*/
 
-
-	public List<Report> getReports() {
+	/*public List<Report> getReports() {
 		return reports;
 	}
 
@@ -249,12 +225,12 @@ public class Doctor {
 		return appointments;
 	}
 
-
+	
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
 	}
-	
+	*/
 	/*@ManyToMany(fetch = FetchType.EAGER)
 	protected Set<Authority> authorities;*/
 
