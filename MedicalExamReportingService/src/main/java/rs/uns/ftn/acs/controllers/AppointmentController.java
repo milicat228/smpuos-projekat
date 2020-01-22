@@ -2,7 +2,10 @@ package rs.uns.ftn.acs.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -13,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import rs.uns.ftn.acs.exceptions.ResourceNotFoundException;
+import rs.uns.ftn.acs.dtos.AppointmentDTO;import rs.uns.ftn.acs.exceptions.ResourceNotFoundException;
+import rs.uns.ftn.acs.feignclient.PatientClient;
 import rs.uns.ftn.acs.model.Appointment;
 import rs.uns.ftn.acs.model.Doctor;
 import rs.uns.ftn.acs.model.Report;
@@ -32,6 +36,8 @@ public class AppointmentController {
 	@Autowired
 	private ProfileService profileService;
 	
+	@Autowired
+	private PatientClient patientClient;
 	
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -80,7 +86,19 @@ public class AppointmentController {
 		}
 		
 	}
-	
-	
+	/*
+	@RequestMapping(value = "appointment", method = RequestMethod.GET)
+	public void updateAppointments(Pageable page){
+		List<AppointmentDTO> dtos = patientClient.updateAppointments();
+		
+		for(AppointmentDTO dto : dtos) {
+			Appointment a = dto.getAppointment;
+			
+			a.getDoctor().incNumOfPatients;
+			appointmentService.saveAppointment(a);
+		}
+		
+	}
+	*/
 
 }
