@@ -35,18 +35,6 @@ public class PatientService extends CRUDService<Patient, Integer> {
 		}
 		throw new ResourceNotFoundException(lbo);
 	}
-	
-	/**
-	 * Find patient and send request to RFZO to update patients insurence date.
-	 * @param lbo
-	 * @return
-	 * @throws ResourceNotFoundException
-	 */
-	public Patient updateInsurenceDate(String lbo) throws ResourceNotFoundException {
-		Patient patient = findByLBO(lbo);
-		return checkInsuranceDate(patient);
-	}
-	
 
 	public Patient checkInsuranceDate(Patient patient) {
 		Date date = rfzoService.getInsurenceEndDate(patient.getLBO(), patient.getZK(), patient.getInsurenceEndDate(), true);
@@ -57,7 +45,6 @@ public class PatientService extends CRUDService<Patient, Integer> {
 		return	patient;
 	}
 	
-
 	public Patient findById(int id) throws ResourceNotFoundException {
 		Optional<Patient> optionalPatient=((PatientRepository) repo).findById(id);
 		if (optionalPatient.isPresent()) {

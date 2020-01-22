@@ -1,5 +1,7 @@
 package rs.uns.ftn.acs.controllers.patient;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +31,7 @@ public class PatientController {
 	
 	@PreAuthorize("hasAnyRole('NURSE')")
 	@RequestMapping(value="/patient", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Patient> save(@RequestBody PatientDTO patientDTO) throws ResourceNotFoundException{
+	public ResponseEntity<Patient> save(@RequestBody @Valid PatientDTO patientDTO) throws ResourceNotFoundException{
 		Patient newPatient = patientDTO.getPatient();
 		Patient createdPatient = patientService.save(newPatient);
 		return new ResponseEntity<Patient>(createdPatient, HttpStatus.OK);
@@ -37,7 +39,7 @@ public class PatientController {
 	
 	@PreAuthorize("hasAnyRole('NURSE')")
 	@RequestMapping(value = "/patient/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Patient> changePassword(@PathVariable int id, @RequestBody PatientDTO patientDTO) throws ResourceNotFoundException{
+	public ResponseEntity<Patient> changePassword(@PathVariable int id, @RequestBody @Valid PatientDTO patientDTO) throws ResourceNotFoundException{
 		Patient patient = patientDTO.getPatient();
 		Patient updatePatient=patientService.findById(id);
 		

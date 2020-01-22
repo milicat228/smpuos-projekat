@@ -32,7 +32,7 @@ public class AppointmentController {
 	@PreAuthorize("hasAnyRole('NURSE')")
 	@RequestMapping(value = "/{lbo}/appointment", method = RequestMethod.GET)
 	public ResponseEntity<AppointmentsDTO> getAll(@PathVariable String lbo) throws ResourceNotFoundException{
-		Patient patient = patientService.updateInsurenceDate(lbo);
+		Patient patient = patientService.findByLBO(lbo);
 		List<AppointmentDTO> appointments = appointmentService.getAppointments(patient);
 		Boolean blocked = patientBlockingService.blockIfNeeded(patient, appointments);
 		AppointmentsDTO ret = new AppointmentsDTO(blocked, appointments);
