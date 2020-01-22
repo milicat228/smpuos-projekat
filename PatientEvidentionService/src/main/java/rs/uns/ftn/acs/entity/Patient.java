@@ -3,6 +3,7 @@ package rs.uns.ftn.acs.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import org.apache.commons.lang.time.DateUtils;
 
 @Entity
+@DiscriminatorValue("patient")
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_generator")
@@ -55,7 +57,7 @@ public class Patient {
 	//Konktakt informacije
 
 	@Column
-	private String adress;
+	private String address;
 
 	@Column
 	private String phoneNumber;
@@ -167,12 +169,12 @@ public class Patient {
 		this.insurenceEndDate = insurenceEndDate;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getPhoneNumber() {

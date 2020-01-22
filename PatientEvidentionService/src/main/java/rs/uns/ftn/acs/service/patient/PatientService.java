@@ -17,7 +17,6 @@ public class PatientService extends CRUDService<Patient, Integer> {
 	@Autowired
 	private RFZOService rfzoService;
 	
-	@Autowired
 	public PatientService(PatientRepository repo) {
 		super(repo);
 	}
@@ -32,7 +31,7 @@ public class PatientService extends CRUDService<Patient, Integer> {
 	public Patient findByLBO(String lbo) throws ResourceNotFoundException {
 		Optional<Patient> optionalPatient = ((PatientRepository) repo).findByLBO(lbo);
 		if (optionalPatient.isPresent()) {
-			return optionalPatient.get();
+			return checkInsuranceDate(optionalPatient.get());
 		}
 		throw new ResourceNotFoundException(lbo);
 	}
@@ -45,13 +44,25 @@ public class PatientService extends CRUDService<Patient, Integer> {
 	 */
 	public Patient updateInsurenceDate(String lbo) throws ResourceNotFoundException {
 		Patient patient = findByLBO(lbo);
-		//parametar true znaci proveri da li je trenutni datum vazenja dalje u budcnosti od danas, ako jeste
-		//ne poziva se rfzo
+		return checkInsuranceDate(patient);
+	}
+	
+
+	public Patient checkInsuranceDate(Patient patient) {
 		Date date = rfzoService.getInsurenceEndDate(patient.getLBO(), patient.getZK(), patient.getInsurenceEndDate(), true);
 		if (date != null) {
 			patient.setInsurenceEndDate(date);
 			save(patient);
 		}
-		return patient;
+		return	patient;
+	}
+	
+
+	public Patient findById(int id) throws ResourceNotFoundException {
+		Optional<Patient> optionalPatient=((PatientRepository) repo).findById(id);
+		if (optionalPatient.isPresent()) {
+			return optionalPatient.get();
+		}
+		throw new ResourceNotFoundException(id+"");
 	}
 }
